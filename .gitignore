@@ -1,0 +1,5 @@
+# compiled or complilation-related files
+**/build
+
+# temporary files
+**/tmp
