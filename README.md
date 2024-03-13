@@ -93,3 +93,22 @@ If you just need the handouts, please check the [latest release](https://github.
     cd src\build-handouts
     .\build-handouts-windows.bat
     ```
+
+1.  Without using Docker, you can also compile the main handout in `src/handouts`. Note that you may need to run `pdflatex` command three or more times to have correct referencing.
+
+    ```bash
+    # with files clustering in the working directory
+    pdflatex main.tex
+
+    # put all compiled files in build/
+    # ..\..\build in Windows
+    mkdir ../../build
+    pdflatex -output-directory="../../build" -file-line-error main.tex
+
+    # see only error messages in Linux
+    # exit code 1 means no error
+    pdflatex -output-directory="../../build" \
+        -file-line-error \
+        main.tex 2>&1 | \
+        grep '^!.*' -A200 --color=always
+    ```
