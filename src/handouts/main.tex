@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+
+% math
+\usepackage{amssymb} % enable \mathbb macro
+\usepackage{bm} % enable \bm for bolded math text
+\usepackage{mathtools} % powerful math macros
+\usepackage{mathabx} % \smalltriangleup
+% reference: https://tex.stackexchange.com/a/43009
+% properly formed argmax and argmin
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+% swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}} %
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+% math operators
+% reference: https://tex.stackexchange.com/a/95726
+\newcommand{\R}{\ensuremath{\mathbb{R}}} % read numbers
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}} % integer numbers
+\newcommand{\N}{\ensuremath{\mathbb{N}}} % positive integer numbers
+\newcommand{\Zp}{\ensuremath{\mathbb{Z}^{+}}} % zero or positive integer numbers
+\newcommand{\Zn}{\ensuremath{\mathbb{Z}^{-}}} % zero or negative integer numbers
+\newcommand{\lvec}{\overrightarrow} % long vector
+\newcommand{\clist}[1]{\ensuremath{{#1}_1,\, \ldots,\, {#1}_n}}%
+\newcommand{\clistj}[2]{\ensuremath{{#1}_1,\, \ldots,\, {#1}_{#2}}}%
+\newcommand{\clistij}[3]{\ensuremath{{#1}_{#2},\, \ldots,\, {#1}_{#3}}}%% restore \leq and \geq to non-slant versions
+% reference: https://math.dartmouth.edu/news-resources/computing/resources_general/symbols-letter.pdf
+\renewcommand{\leq}{\varleq}%
+\renewcommand{\geq}{\vargeq}%
+% reference: https://tex.stackexchange.com/a/471265
+\def\stackbelow#1#2{\underset{\displaystyle\overset{\displaystyle\shortparallel}{#2}}{#1}}
+% ceil and floor
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% array (table formatting), multi-column and multi-row in table
+% reference: https://stackoverflow.com/a/63365298
+\usepackage{array, multicol, multirow}
+\newcolumntype{L}{>{\centering\arraybackslash}l} %
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} %
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} %
+
+% author affiliations
+\usepackage{authblk}
+
+% British paragraph styles:
+% 1. no tab at the beginning of each paragraph
+% 2. a gap between two adjacent paragraphs.
+\usepackage[english]{babel}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+% table of content title
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}%
+    {Table of Contents}%
+}
+
+% matrix with indices around
+% \usepackage{blkarray}
+
+% pictures/images from files
+\usepackage{caption, graphicx, subcaption}
+\graphicspath{{./figures/}} % path that contains required images
+
+% format date macros (\today, \DTMnow)
+\usepackage{datetime2}
+
+% set page margins
+\usepackage[a4paper,
+            bindingoffset=.2in,
+            left=.5in,
+            right=.5in,
+            top=.5in,
+            bottom=.5in,
+            footskip=.25in]{geometry}
+
+% hyper links, and make table of contents links
+% note that `hyperref` must be loaded before `cleveref`
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linktoc=all,
+    allcolors=black
+}
+% allow hyphened URLs
+\PassOptionsToPackage{hyphens}{url}
+
+% references
+\usepackage{cleveref}
+\Crefformat{figure}{Fig.~#2#1#3}%
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\Crefformat{subfigure}{Fig.~#2#1#3}
+\Crefformat{equation}{Eq.~#2#1#3}
+\Crefformat{table}{Table~#2#1#3}
+
+% plots
+\usepackage{pgfplots, tikz}
+\pgfplotsset{compat=1.18} % to satisfy pdflatex
+\usetikzlibrary {arrows.meta, positioning}
+
+% justifying all paragraphs by default
+\usepackage{ragged2e}
+\justifying
+
+% sub-files: independent files for multiple sections
+\usepackage{subfiles}
+
+% colored text 
+\usepackage{xcolor}
+\newcommand{\supp}[1]{\textcolor{gray}{#1}}
+\newcommand{\comment}[1]{\supp{#1}}
+
+% compact version of itemize
+\newenvironment{itemize*}
+  {\vspace{-1em}
+    \begin{itemize}%
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+  }
+  {\end{itemize}
+    \vspace{-1em}}%
+
+% compact version of enumerate
+\newenvironment{enumerate*}
+  {\vspace{-1em}
+    \begin{enumerate}%
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+  }
+  {\end{enumerate}
+    \vspace{-1em}}%
+
+% prepend section number to all equation numbers
+\numberwithin{equation}{section}
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+
+% get the version number from file "version.txt"
+% properly: https://tex.stackexchange.com/a/204036
+\newcommand\getversionnumber{%
+  \newread\tmp
+  \openin\tmp=version.txt
+  \read\tmp to \versionnumber
+  \closein\tmp
+}
+
+% document metadata
+\title{\huge\textbf{Handouts of Optimum Design}}
+\author[1]{Kuang-You Cheng}
+\author[2]{Bo-Jui Huang}
+\affil[1]{Physical Education, Health and Leisure Studies, National Cheng Kung University, Taiwan}
+\affil[2]{Department of Electrical Engineering, National Cheng Kung University, Taiwan}
+\date{Release: \getversionnumber\versionnumber (\DTMnow)}
+
+% ---- beginning of document ----
+\begin{document}
+
+\maketitle
+\pagenumbering{Roman}
+\tableofcontents
+
+\pagenumbering{arabic}
+% \subfile{./sections/introduction}
+% \clearpage
+
+\end{document}
