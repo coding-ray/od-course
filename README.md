@@ -7,3 +7,7 @@ The lecture materials of the course [Optimum Design](https://class-qry.acad.ncku
 \*\* Institute of Physical Education, Health &Leisure Studies (體育健康與休閒研究所)
 
 \*\*\* National Cheng Kung University (國立成功大學)
+
+## Getting Handouts
+
+If you just need the handouts, please check the [latest release](https://github.com/coding-ray/od-course/releases/latest).
