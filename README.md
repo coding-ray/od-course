@@ -112,3 +112,11 @@ If you just need the handouts, please check the [latest release](https://github.
         main.tex 2>&1 | \
         grep '^!.*' -A200 --color=always
     ```
+
+## Reporting Bugs or Supplementary Contents
+
+Ray <[coding-ray](https://github.com/coding-ray)> (黃柏叡) is the primary maintainer of this repo, but the instructor [Kuang-You Cheng (鄭匡佑)](https://pehl.ncku.edu.tw/p/412-1136-22064.php) is the primary provider of the handouts.
+
+As a result, for typos in content or technical problems (Docker, LaTeX, etc.), please contact Ray by [opening an issue](https://github.com/coding-ray/od-course/issues).
+
+For content correctness related problems (like misleading definitions) or supplementary content (like missing but important theorems or proofs), please [email the instructor](mailto:kybcheng@mail.ncku.edu.tw) to get a correct and wanted version before [opening an issue](https://github.com/coding-ray/od-course/issues).
