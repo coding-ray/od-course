@@ -75,3 +75,21 @@ If you just need the handouts, please check the [latest release](https://github.
     1. [TeXstudio](https://www.texstudio.org/)
     1. [TeXworks](https://tug.org/texworks/)
     </details>
+
+### Compilation of TeX Files
+
+<div id="docker-handout"></div>
+
+1.  With Docker, you could compile the main handout `src/handouts/main.tex` in a Docker container.
+
+    ```bash
+    # Linux
+    cd src/build-handouts
+    ./build-handouts.sh
+    ```
+
+    ```bat
+    rem Windows, in Command Prompt (CMD)
+    cd src\build-handouts
+    .\build-handouts-windows.bat
+    ```
