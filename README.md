@@ -120,3 +120,9 @@ Ray <[coding-ray](https://github.com/coding-ray)> (黃柏叡) is the primary mai
 As a result, for typos in content or technical problems (Docker, LaTeX, etc.), please contact Ray by [opening an issue](https://github.com/coding-ray/od-course/issues).
 
 For content correctness related problems (like misleading definitions) or supplementary content (like missing but important theorems or proofs), please [email the instructor](mailto:kybcheng@mail.ncku.edu.tw) to get a correct and wanted version before [opening an issue](https://github.com/coding-ray/od-course/issues).
+
+## Contribution and Development
+
+Contribution like [pull requests](https://github.com/coding-ray/od-course/pulls) are welcomed.
+
+Please check the [rules and notes](doc/dev-notes.md) in advance.
